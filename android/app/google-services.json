@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "206788565870",
+    "project_id": "my-shop-net2",
+    "storage_bucket": "my-shop-net2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206788565870:android:88bdc20254825558a7ff7f",
+        "android_client_info": {
+          "package_name": "com.example.shopnet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206788565870-tehtlubuarf1t84n96mq268uk4pgekut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6X8pqcR2WB9tYwkf-ItzOkrWGZIrChYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206788565870-tehtlubuarf1t84n96mq268uk4pgekut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
