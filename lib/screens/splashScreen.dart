@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopnet/screens/loginpage.dart';
+import 'package:shopnet/screens/signup.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -63,7 +64,11 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignupPage()));
+                  },
+             
                   child: Container(
                     height: 50,
                     width: 150,

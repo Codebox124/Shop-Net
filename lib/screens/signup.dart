@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:shopnet/firebase/auth.dart';
-import 'package:shopnet/screens/signup.dart';
+import 'package:shopnet/screens/loginpage.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
+  final _formkey = GlobalKey<FormState>();
   String email = '';
   String password = '';
   String username = '';
-  final _formkey = GlobalKey<FormState>();
-  bool isLogin = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,14 +36,14 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Sign In",
+                    "Sign Up",
                     style: TextStyle(fontSize: 25, color: Colors.black),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    "Welcome back! Don’t have an account?",
+                    "Welcome back! have an account ?",
                     style: TextStyle(fontSize: 18, color: Colors.black),
                   ),
                   SizedBox(
@@ -52,13 +51,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignupPage()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
                     },
                     child: Text(
-                      "Sign Up",
+                      "Login",
                       style: TextStyle(fontSize: 18, color: Colors.green),
                     ),
                   ),
@@ -67,6 +64,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextFormField(
                     key: ValueKey("email"),
+                    validator: (value) {
+                      if (!(value.toString().contains("@"))) {
+                        return 'Invalid Email';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onSaved: (Value) {
+                      setState(() {
+                        email = Value!;
+                      });
+                    },
                     decoration: InputDecoration(
                       hintText: "Email",
                       border: InputBorder.none,
@@ -78,7 +87,43 @@ class _LoginPageState extends State<LoginPage> {
                     height: 30,
                   ),
                   TextFormField(
+                    key: ValueKey("username"),
+                    validator: (value) {
+                      if (value.toString().length < 3) {
+                        return 'Username must be more than 4 characters!';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onSaved: (Value) {
+                      setState(() {
+                        username = Value!;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      hintText: "Username",
+                      border: InputBorder.none,
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 231, 231, 231),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
                     key: ValueKey("password"),
+                    validator: (value) {
+                      if (value.toString().length < 6) {
+                        return 'Password must be more than 6 characters!';
+                      } else {
+                        return null;
+                      }
+                    },
+                    onSaved: (Value) {
+                      setState(() {
+                        password = Value!;
+                      });
+                    },
                     obscureText: true,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
@@ -95,15 +140,16 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: () {
                       if (_formkey.currentState!.validate()) {
                         _formkey.currentState!.save();
-                        signin(email, password);
+                         signup(email, password);
                       }
+                     
                     },
                     child: Container(
                       height: 50,
                       color: Colors.green,
                       child: Center(
                         child: Text(
-                          "Login",
+                          "SignUp",
                           style: TextStyle(
                             color: Colors.white,
                           ),
@@ -113,53 +159,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(
                     height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Remember Me"),
-                      Text("Forget Password ?"),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Center(child: Text("Or")),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(width: 0.5),
-                    ),
-                    height: 50,
-                    child: Center(
-                      child: Text(
-                        "Login with Google",
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(width: 0.5),
-                    ),
-                    height: 50,
-                    child: Center(
-                      child: Text(
-                        "Login with Apple",
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
                   ),
                 ],
               ),
