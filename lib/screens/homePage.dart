@@ -7,7 +7,10 @@ import 'loginpage.dart';
 
 class HomePage extends StatefulWidget {
   final User user;
-  const HomePage({super.key, required this.user});
+  const HomePage({
+    super.key,
+    required this.user,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -47,8 +50,9 @@ class _HomePageState extends State<HomePage> {
           elevation: 0,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.home_rounded),
               label: 'Home',
+             
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.shopping_bag_outlined),
@@ -63,10 +67,10 @@ class _HomePageState extends State<HomePage> {
               label: 'Proile',
             ),
           ]),
-      backgroundColor: Color.fromARGB(232, 255, 255, 255),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
-        child: SingleChildScrollView(
+      backgroundColor: Color.fromARGB(242, 255, 255, 255),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
           child: Column(
             children: [
               Row(
@@ -94,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               SizedBox(
-                height: 20,
+                height: 40,
               ),
               Container(
                 height: 200,
@@ -119,24 +123,22 @@ class _HomePageState extends State<HomePage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                           SizedBox(
+                          SizedBox(
                             height: 20,
                           ),
                           Text(
                             "Enjoy Great unfront saving\nEnjoy Great unfront saving ",
                             style: TextStyle(
                               fontSize: 12,
-                     
                             ),
                           ),
-                           SizedBox(
+                          SizedBox(
                             height: 20,
                           ),
                           Container(
-                           decoration: BoxDecoration(
-                             color: const Color.fromARGB(255, 88, 241, 93),
-                             borderRadius: BorderRadius.circular(10)
-                           ),
+                            decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 88, 241, 93),
+                                borderRadius: BorderRadius.circular(10)),
                             height: 40,
                             width: 150,
                             child: Center(
@@ -146,6 +148,116 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       Image.asset("assets/imgs/Rectangle 12.png")
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Shocking Sale",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "View more",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.green,
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Container(
+                height: 200,
+                width: double.infinity,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  separatorBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      width: 10,
+                    );
+                  },
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      children: [
+                        Image.asset(
+                          "assets/imgs/card 3.png",
+                        )
+                      ],
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              Container(
+                height: 200,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 59, 167, 38),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "Get RM10.00 OFF",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "Spen min RM100.00 to get free\ndeliveryand promo voucher for\nyour next purchase. ",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10)),
+                            height: 40,
+                            width: 150,
+                            child: Center(
+                              child: Text("Buy Now",style: TextStyle(
+                              
+                              ),),
+                            ),
+                          )
+                        ],
+                      ),
+                      Image.asset(
+                        "assets/imgs/Rectangle 26.png",
+                        width: 150,
+                      )
                     ],
                   ),
                 ),
