@@ -1,16 +1,10 @@
 # shopnet
 
-A new Flutter project.
+This is an E-commerce App i am building .
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+[localhost-58399-](https://github.com/Codebox124/Shop-Net/assets/105174934/9fae965c-b2f1-4372-8783-2a326dfb7145)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
