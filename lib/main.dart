@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       routes: <String, WidgetBuilder>{
         '/landingPage' : (BuildContext context )=> MyApp(),
         '/loginPage' : (BuildContext context )=> LoginPage(),
-        // '/HomePage' : (BuildContext context )=> HomeScreen(),
+    
       },
       debugShowCheckedModeBanner: false,
       home:SplashScreen() ,

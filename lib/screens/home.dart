@@ -1,64 +1,63 @@
-// import 'package:flutter/material.dart';
-// import 'package:shopnet/screens/homePage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:shopnet/screens/homePage.dart';
+import 'package:shopnet/screens/noti.dart';
+import 'package:shopnet/screens/profile.dart';
+import 'package:shopnet/screens/shopPage.dart';
 
-// class BottomNavigationExample extends StatefulWidget {
-//   const BottomNavigationExample({Key? key}) : super(key: key);
+class BottomNavigationExample extends StatefulWidget {
+  const BottomNavigationExample({Key? key}) : super(key: key);
 
-//   @override
-//   _BottomNavigationExampleState createState() =>
-//       _BottomNavigationExampleState();
-// }
+  @override
+  _BottomNavigationExampleState createState() =>
+      _BottomNavigationExampleState();
+}
 
-// class _BottomNavigationExampleState extends State {
-//   int _selectedTab = 1;
+class _BottomNavigationExampleState extends State {
+  List pages = [
+    HomePage(),
+    ShopPage(),
+    NotiicationPage(),
+    ProfilePage(),
+  ];
+  int currentIndex = 0;
 
-//   final List _pages = [
-//     Center(
-//       child: HomePage(user: user),
-//     ),
-//     Center(
-//       child: Text("About"),
-//     ),
-//     Center(
-//       child: Text("Products"),
-//     ),
-//     Center(
-//       child: Text("Contact"),
-//     ),
-//     Center(
-//       child: Text("Settings"),
-//     ),
-//   ];
-  
+  void onTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
 
-
-//   _changeTab(int index) {
-//     setState(() {
-//       _selectedTab = index;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(),
-//       body: _pages[_selectedTab],
-//       bottomNavigationBar: BottomNavigationBar(
-//         currentIndex: _selectedTab,
-//         onTap: (index) => _changeTab(index),
-//         selectedItemColor: Colors.red,
-//         unselectedItemColor: Colors.grey,
-//         items: [
-//           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-//           BottomNavigationBarItem(icon: Icon(Icons.person), label: "About"),
-//           BottomNavigationBarItem(
-//               icon: Icon(Icons.grid_3x3_outlined), label: "Product"),
-//           BottomNavigationBarItem(
-//               icon: Icon(Icons.contact_mail), label: "Contact"),
-//           BottomNavigationBarItem(
-//               icon: Icon(Icons.settings), label: "Settings"),
-//         ],
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: pages[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          currentIndex: currentIndex,
+          onTap: onTap,
+          selectedItemColor: Colors.green,
+          unselectedItemColor: Color.fromARGB(255, 27, 27, 27),
+          elevation: 0,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_rounded),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag_outlined),
+              label: 'Shop',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notifications_none_outlined),
+              label: 'Notiication',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_2_outlined),
+              label: 'Proile',
+            ),
+          ]),
+      backgroundColor: Color.fromARGB(242, 255, 255, 255),
+    );
+  }
+}

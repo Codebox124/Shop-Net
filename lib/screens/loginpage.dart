@@ -6,6 +6,8 @@ import 'package:shopnet/screens/homePage.dart';
 
 import 'package:shopnet/screens/signup.dart';
 
+import 'home.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -15,26 +17,25 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
- Future<FirebaseApp> _initializeFirebase() async {
+  Future<FirebaseApp> _initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
     User? user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomePage(
-            user: user,
+          builder: (context) => BottomNavigationExample(
+           
           ),
         ),
       );
     }
     return firebaseApp;
-}
+  }
 
   final _emailTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
   final _focusEmail = FocusNode();
-    final  _focusPassword = FocusNode();
- 
+  final _focusPassword = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -66,16 +67,16 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               Text(
                                 "Sign In",
-                                style:
-                                    TextStyle(fontSize: 25, color: Colors.black),
+                                style: TextStyle(
+                                    fontSize: 25, color: Colors.black),
                               ),
                               SizedBox(
                                 height: 20,
                               ),
                               Text(
                                 "Welcome back! Don’t have an account?",
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.black),
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black),
                               ),
                               SizedBox(
                                 height: 10,
@@ -150,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                                       Navigator.of(context).pushReplacement(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                HomePage(user: user)),
+                                                BottomNavigationExample()),
                                       );
                                     }
                                   }
@@ -172,7 +173,8 @@ class _LoginPageState extends State<LoginPage> {
                                 height: 10,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Remember Me"),
                                   Text("Forget Password ?"),

@@ -1,15 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shopnet/screens/noti.dart';
-import 'package:shopnet/screens/profile.dart';
-import 'package:shopnet/screens/shopPage.dart';
+
 import 'loginpage.dart';
 
 class HomePage extends StatefulWidget {
-  final User user;
+
   const HomePage({
     super.key,
-    required this.user,
+
   });
 
   @override
@@ -17,57 +15,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List pages = [
-    ShopPage(),
-    NotiicationPage(),
-    ProfilePage(),
-  ];
-  int currentIndex = 0;
+ 
 
-  void onTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
 
-  late User _currentUser;
 
   @override
   void initState() {
-    _currentUser = widget.user;
+   
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          currentIndex: currentIndex,
-          onTap: onTap,
-          selectedItemColor: Colors.green,
-          unselectedItemColor: Color.fromARGB(255, 27, 27, 27),
-          elevation: 0,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded),
-              label: 'Home',
-             
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_bag_outlined),
-              label: 'Shop',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_none_outlined),
-              label: 'Notiication',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_2_outlined),
-              label: 'Proile',
-            ),
-          ]),
-      backgroundColor: Color.fromARGB(242, 255, 255, 255),
+     
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
@@ -84,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                             fontSize: 13,
                           )),
                       Text(
-                        " ${_currentUser.displayName}",
+                        "Comrade",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -179,7 +140,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 height: 200,
-                width: double.infinity,
+        
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: 4,
@@ -204,8 +165,8 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 height: 200,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+      
+                decoration: BoxDecoration(  
                     color: Color.fromARGB(255, 59, 167, 38),
                     borderRadius: BorderRadius.circular(10)),
                 child: Padding(
@@ -231,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                             height: 20,
                           ),
                           Text(
-                            "Spen min RM100.00 to get free\ndeliveryand promo voucher for\nyour next purchase. ",
+                            "Spen min RM100.00 to get free\n deliveryand promo voucher for\nyour next purchase. ",
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.white,
@@ -262,17 +223,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () async {
-                    await FirebaseAuth.instance.signOut();
-
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(),
-                      ),
-                    );
-                  },
-                  child: Text('Sign out'))
+            
             ],
           ),
         ),

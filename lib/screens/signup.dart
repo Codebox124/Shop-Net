@@ -142,7 +142,7 @@ class _SignupPageState extends State<SignupPage> {
                             Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
                                 
-                                builder: (context) => HomePage(user: user),
+                                builder: (context) => BottomNavigationExample(),
                               ),
                               ModalRoute.withName('/'),
                             );
